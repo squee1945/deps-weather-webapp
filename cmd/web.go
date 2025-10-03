@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/kmonty-catamaran/deps-weather-webapp/pkg/app"
-	ipweather "github.com/squee1945/deps-ip-weather"
 )
 
 const (
@@ -19,9 +18,9 @@ func main() {
 		port = defaultPort
 	}
 
-	ipw, err := ipweather.New()
+	ipw, err := app.NewWeatherAdapter()
 	if err != nil {
-		exit("ipweather.New(): %v", err)
+		exit("app.NewWeatherAdapter(): %v", err)
 	}
 
 	a := app.New(ipw)
